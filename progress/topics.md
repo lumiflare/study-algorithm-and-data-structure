@@ -5,7 +5,7 @@
 ---
 
 ## 1. 배열 & 해싱 (Arrays & Hashing) ★★★
-- [ ] 해시맵 (HashMap/Dictionary)
+- [~] 해시맵 (HashMap/Dictionary)
 - [ ] 해시셋 (HashSet)
 - [ ] 빈도수 세기 (Frequency Count)
 - [ ] 투 섬 패턴 (Two Sum Pattern)
