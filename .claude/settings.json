@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.acmicpc.net)",
+      "WebFetch(domain:acmicpc.net)",
+      "WebFetch(domain:school.programmers.co.kr)",
+      "WebFetch(domain:programmers.co.kr)",
+      "WebFetch(domain:neetcode.io)",
+      "WebFetch(domain:leetcode.com)",
+      "WebFetch(domain:atcoder.jp)",
+      "WebFetch(domain:www.atcoder.jp)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(date:*)",
+      "Bash(wc:*)",
+      "Bash(grep:*)",
+      "Bash(tail:*)",
+      "Bash(head:*)",
+      "Bash(find:*)",
+      "Bash(python3:*)"
+    ]
+  }
+}
