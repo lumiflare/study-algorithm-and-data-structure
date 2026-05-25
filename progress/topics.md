@@ -6,9 +6,9 @@
 
 ## 1. 배열 & 해싱 (Arrays & Hashing) ★★★
 - [~] 해시맵 (HashMap/Dictionary)
-- [ ] 해시셋 (HashSet)
-- [ ] 빈도수 세기 (Frequency Count)
-- [ ] 투 섬 패턴 (Two Sum Pattern)
+- [x] 해시셋 (HashSet)
+- [!] 빈도수 세기 (Frequency Count)
+- [!] 투 섬 패턴 (Two Sum Pattern)
 - [ ] 아나그램 판별 (Anagram)
 - [ ] 배열 회전 (Array Rotation)
 - [ ] 프리픽스 합 (Prefix Sum)

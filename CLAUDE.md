@@ -29,11 +29,16 @@ CLAUDE.md는 항상 로드되므로, 빈도가 낮은 상세 정보는 `docs/`�
 
 | 문서 | 읽어야 할 때 |
 |------|-------------|
+| `docs/tutor-rules.md` | **`/quiz`, `/solve` 등 학습 커맨드 실행 시 반드시 먼저 Read** (사용자 맞춤 운영 규칙) |
 | `docs/topic-tree.md` | `/explain` `/quiz` `/solve` 등에서 특정 토픽의 위치를 확인할 때 |
 | `docs/company-profiles.md` | `/company` `/mock-test` 커맨드로 기업별 대비를 할 때 |
 | `docs/complexity-cheatsheet.md` | 복잡도 비교·설명이 필요할 때 |
 | `docs/python-patterns.md` | Python 코딩테스트 관용구·라이브러리 안내 시 |
 | `docs/records.md` | `wrong-answers.md` / `solve-log.md` 등을 업데이트할 때 |
+
+## 메모리 정책
+
+- **auto memory 사용 금지**: 새 규칙·선호는 `docs/tutor-rules.md`에 추가한다 (`~/.claude/projects/.../memory/`에 저장하지 않음)
 
 ## 학습 기록 관리
 
