@@ -152,3 +152,65 @@ for x in nums:
 ### 자주 하는 실수
 - `seen[x] = i`를 조회보다 먼저 두면 자기 자신과 매칭됨 → **조회 → 기록 순서**
 - 반환 형식 (인덱스 vs 값, 순서) — 출력 체크리스트 필수
+
+---
+
+## 프리픽스 합 (Prefix Sum) [학습중 2026-05-27]
+
+### 핵심 정리
+
+1. **누적합 한 번 계산 → 임의 구간 합 O(1)**. 전처리 O(N), 쿼리 O(1)
+2. **`prefix[0] = 0` 더미 첫 칸**: 길이 N+1로 만들어 인덱스 분기 제거
+3. **공식**: `nums[L..R] 합 = prefix[R+1] - prefix[L]`
+4. **`accumulate(nums, initial=0)`** — 한 줄로 끝 (Python 3.8+)
+5. **Subarray Sum = K 패턴**: 「현재 누적합 - K가 이전에 본 적 있나?」 → Two Sum 쌍둥이
+6. **2D 프리픽스**: 포함-배제 원리, 직사각형 영역 합도 O(1)
+7. **차분 배열**: 역방향 응용. 「구간 업데이트 여러 번 + 최종 배열」을 O(N+Q)에
+
+### 실전 필수 패턴 (외워야 할 두 줄)
+```python
+from itertools import accumulate
+from collections import defaultdict
+
+# 1D 구간 합 — O(1) 쿼리
+prefix = list(accumulate(nums, initial=0))
+range_sum = prefix[R+1] - prefix[L]       # nums[L..R] 양 끝 포함
+
+# Subarray Sum = K — 부분 배열 합이 K인 개수 (LeetCode 560)
+prefix_count = defaultdict(int)
+prefix_count[0] = 1                       # ⚠️ 초기화 필수 ("빈 합 = 0번 본 적 있음")
+prefix = count = 0
+for x in nums:
+    prefix += x
+    count += prefix_count[prefix - k]     # 조회 먼저 (Two Sum 패턴)
+    prefix_count[prefix] += 1             # 기록 나중
+```
+
+### 2D 프리픽스 (행렬 직사각형 합 O(1))
+```python
+# 빌드: P[i+1][j+1] = grid[i][j] + P[i][j+1] + P[i+1][j] - P[i][j]
+# 쿼리: rect = P[r2+1][c2+1] - P[r1][c2+1] - P[r2+1][c1] + P[r1][c1]
+```
+
+### 차분 배열 (Difference Array — 역방향 응용)
+```python
+# 여러 구간 [L,R]에 v를 더한 후 최종 배열을 구하는 문제
+diff = [0] * (N + 1)
+for L, R, v in updates:
+    diff[L] += v
+    diff[R+1] -= v
+result = list(accumulate(diff[:-1]))      # 마지막 한 번 누적합
+```
+
+### 패턴 인식 트리거
+- 「구간 합 / 부분 배열 합」 → 1D 프리픽스
+- 「합 = K 인 부분 배열의 개수」 → 프리픽스 + 해시맵 (Two Sum 패턴)
+- 「쿼리 여러 번」 → 전처리로 O(1) 응답
+- 「행렬 직사각형 영역 합」 → 2D 프리픽스
+- 「여러 구간 업데이트 후 최종 배열」 → 차분 배열
+
+### 자주 하는 실수
+- **`prefix_count[0] = 1` 초기화 누락** — 처음부터의 부분 배열 카운트 빠짐
+- **인덱스 오프셋**: `prefix[R+1] - prefix[L]` (R 양 끝 포함). `prefix[R] - prefix[L]`로 쓰면 마지막 원소 빠짐
+- **2D 포함-배제 부호**: 빼는 것 2개, 모서리 한 번 더 빼졌으니 다시 더하기
+- **매 쿼리마다 `sum(nums[L:R+1])`** 호출 → O(N×Q) TLE. 전처리 필수

@@ -5,13 +5,13 @@
 ---
 
 ## 1. 배열 & 해싱 (Arrays & Hashing) ★★★
-- [~] 해시맵 (HashMap/Dictionary)
+- [x] 해시맵 (HashMap/Dictionary)
 - [x] 해시셋 (HashSet)
-- [!] 빈도수 세기 (Frequency Count)
+- [x] 빈도수 세기 (Frequency Count)
 - [!] 투 섬 패턴 (Two Sum Pattern)
-- [ ] 아나그램 판별 (Anagram)
+- [x] 아나그램 판별 (Anagram)
 - [ ] 배열 회전 (Array Rotation)
-- [ ] 프리픽스 합 (Prefix Sum)
+- [x] 프리픽스 합 (Prefix Sum)
 - [ ] 행렬 조작 (Matrix Manipulation)
 
 ## 2. 투 포인터 (Two Pointers) ★★
